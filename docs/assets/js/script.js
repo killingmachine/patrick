@@ -34,13 +34,13 @@ var TxtType = function(el, toRotate, period) {
         if (this.isDeleting) { delta /= 2; }
 
         if (!this.isDeleting && this.txt === fullTxt) {
-            delta = this.period;
-            this.isDeleting = true;
+	        delta = this.period;
+	        this.isDeleting = true;
         } 
         else if (this.isDeleting && this.txt === '') {
-            this.isDeleting = false;
-            this.loopNum++;
-            delta = 500;
+	        this.isDeleting = false;
+	        this.loopNum++;
+	        delta = 500;
         }
 
         setTimeout(function() {
@@ -84,16 +84,16 @@ var TxtType = function(el, toRotate, period) {
         var skill = document.getElementsByClassName('svg');
         var elements = document.getElementsByClassName('typewrite');
         for (var i=0; i<elements.length; i++) {
-            if(i == 1){
-                continue;
-            }
-            else{
-                var toRotate = elements[i].getAttribute('data-type');
-                var period = elements[i].getAttribute('data-period');
-                if (toRotate) {
-                  new TxtType(elements[i], JSON.parse(toRotate), period);
-                }
-            } 
+        	if(i == 1){
+        		continue;
+        	}
+        	else{
+        		var toRotate = elements[i].getAttribute('data-type');
+	            var period = elements[i].getAttribute('data-period');
+	            if (toRotate) {
+	              new TxtType(elements[i], JSON.parse(toRotate), period);
+	            }
+        	} 
         }
         var css = document.createElement("style");
         css.type = "text/css";
@@ -118,36 +118,22 @@ var TxtType = function(el, toRotate, period) {
        var comment = document.getElementById("comment");
 
        sndBtn.onclick = function(){
-        if(email.value == '' && name.value == '' && comment.value == '')
-            talkToMe("name, email, and message are required!");        
+        if(email.value == '' || name.value == '' || comment.value == '')
+            talkToMe("name, email, and message are required!");
         else{
-            if(name.value != '' && email.value == '' && comment.value == '')
-                talkToMe("HELLO"+ name.value + "! email, and message are required!");               
-            else if(name.value != '' && email.value != '' && comment.value == ''){
-                if(emReg.test(email.value))
-                    talkToMe("HELLO"+ name.value + "! Pls fill up the message box");
-                else
-                    talkToMe("HELLO"+ name.value + "! Pls enter a Valid email address");    
-                       
-            }
-            else if(name.value == '' && email.value != '' && comment.value == ''){
-                    talkToMe("Pls enter a Valid email address");
-            }
-            else{
-                if(emReg.test(email.value)){
-                    talkToMe("Thank you for inquiring, Your message has been sent"); 
+            if(emReg.test(email.value)){
+                    talkToMe("Thank you " + name.value +" for inquiring, Your message has been sent"); 
                     emailjs.send("gmail","template_TWrDajWZ",{name: name.value, notes: comment.value});
                     email.value = "";
                     name.value = "";
                     comment.value = "";
                     company.value = "";   
                 }
-                else{
-                    talkToMe("Hey " + name.value + "! please enter a valid email");
-                }
-            }
-        }
 
+            else{
+                talkToMe("please enter a valid email"); 
+            }
+        }        
        }
     };
      function scrollEffect(){
@@ -193,8 +179,8 @@ var TxtType = function(el, toRotate, period) {
                 lin.style.width = 0 + "px";
 
                 js.style.width = 0 + "px";
-                php.style.width = 0 + "px";
-                sq.style.width = 0 + "px";
+               php.style.width = 0 + "px";
+               sq.style.width = 0 + "px";
                 hs.style.width = 0 + "px";
                 bck.style.top= 50 + "px" ;
                 frt.style.top = 50 + "px";
@@ -210,7 +196,7 @@ var TxtType = function(el, toRotate, period) {
                 setTimeout(function(){ svg[7].style.opacity = 0; }, 2000);
             }
             else if(Math.floor(window.pageYOffset) >= skillSec
-                && Math.floor(window.pageYOffset) < 900){  
+                && Math.floor(window.pageYOffset) < frthSec){  
                 pto.style.width = 200 + "px";
                 htm.style.width = 820 + "px";
                 pto.style.width = 200 + "px";
@@ -242,8 +228,3 @@ var TxtType = function(el, toRotate, period) {
     }
 
     window.addEventListener('scroll',scrollEffect);
-
-
- 
-
-    
