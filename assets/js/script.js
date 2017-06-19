@@ -118,35 +118,19 @@ var TxtType = function(el, toRotate, period) {
        var comment = document.getElementById("comment");
 
        sndBtn.onclick = function(){
-        if(email.value == '' && name.value == '' && comment.value == '')
+        if(email.value == '' || name.value == '' || comment.value == '')
             talkToMe("name, email, and message are required!");        
         else{
-            if(name.value != '' && email.value == '' && comment.value == '')
-                talkToMe("HELLO"+ name.value + "! email, and message are required!");               
-            else if(name.value != '' && email.value != '' && comment.value == ''){
-                if(emReg.test(email.value))
-                    talkToMe("HELLO"+ name.value + "! Pls fill up the message box");
-                else
-                    talkToMe("HELLO"+ name.value + "! Pls enter a Valid email address");    
-                       
-            }
-            else if(name.value == '' && email.value != '' && comment.value == ''){
-                    talkToMe("Pls enter a Valid email address");
-            }
-            else{
-                if(emReg.test(email.value)){
-                    talkToMe("Thank you for inquiring, Your message has been sent"); 
+            if(emReg.test(email.value)){
+                talkToMe("Thank you for inquiring, Your message has been sent"); 
                     emailjs.send("gmail","template_TWrDajWZ",{name: name.value, notes: comment.value});
                     email.value = "";
                     name.value = "";
                     comment.value = "";
-                    company.value = "";   
-                }
-                else{
-                    talkToMe("Hey " + name.value + "! please enter a valid email");
-                }
-            }
-        }
+                    company.value = "";  
+            }    
+            
+                    
 
        }
     };
