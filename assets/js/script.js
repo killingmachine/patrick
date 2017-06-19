@@ -224,7 +224,7 @@ var TxtType = function(el, toRotate, period) {
                 setTimeout(function(){ svg[7].style.opacity = 0; }, 2000);
             }
             else if(Math.floor(window.pageYOffset) >= skillSec
-                && Math.floor(window.pageYOffset) < 900){  
+                && Math.floor(window.pageYOffset) < frthSec){  
                 pto.style.width = 200 + "px";
                 htm.style.width = 820 + "px";
                 pto.style.width = 200 + "px";
