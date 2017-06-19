@@ -118,21 +118,23 @@ var TxtType = function(el, toRotate, period) {
        var comment = document.getElementById("comment");
 
        sndBtn.onclick = function(){
-        if(email.value == '' || name.value == '' || comment.value == '')
+        if(email.value == '' || name.value == '' || comment.value == ''){
             talkToMe("name, email, and message are required!");        
+        }
         else{
             if(emReg.test(email.value)){
                 talkToMe("Thank you for inquiring, Your message has been sent"); 
-                    emailjs.send("gmail","template_TWrDajWZ",{name: name.value, notes: comment.value});
-                    email.value = "";
-                    name.value = "";
-                    comment.value = "";
-                    company.value = "";  
+                emailjs.send("gmail","template_TWrDajWZ",{name: name.value, notes: comment.value});
+                email.value = "";
+                name.value = "";
+                comment.value = "";
+                company.value = "";  
             }    
             
                     
 
        }
+        }
     };
      function scrollEffect(){
             var svg = document.getElementsByClassName('svg');
