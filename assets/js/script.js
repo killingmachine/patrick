@@ -129,6 +129,10 @@ var TxtType = function(el, toRotate, period) {
                     comment.value = "";
                     company.value = "";   
                 }
+
+            else{
+                talkToMe("pls enter a valid email"); 
+            }
         }        
        //  else{
        //      if(name.value != '' && email.value == '' && comment.value == '')
