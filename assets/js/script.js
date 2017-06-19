@@ -131,7 +131,7 @@ var TxtType = function(el, toRotate, period) {
                 }
 
             else{
-                talkToMe("pls enter a valid email"); 
+                talkToMe("please enter a valid email"); 
             }
         }        
        //  else{
