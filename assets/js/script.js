@@ -117,9 +117,19 @@ var TxtType = function(el, toRotate, period) {
        var comp = document.getElementById("company");
        var comment = document.getElementById("comment");
 
-       // sndBtn.onclick = function(){
-       //  if(email.value == '' || name.value == '' || comment.value == '')
-       //      talkToMe("name, email, and message are required!");        
+       sndBtn.onclick = function(){
+        if(email.value == '' || name.value == '' || comment.value == '')
+            talkToMe("name, email, and message are required!");
+        else{
+            if(emReg.test(email.value)){
+                    talkToMe("Thank you " + name.value +" for inquiring, Your message has been sent"); 
+                    emailjs.send("gmail","template_TWrDajWZ",{name: name.value, notes: comment.value});
+                    email.value = "";
+                    name.value = "";
+                    comment.value = "";
+                    company.value = "";   
+                }
+        }        
        //  else{
        //      if(name.value != '' && email.value == '' && comment.value == '')
        //          talkToMe("HELLO"+ name.value + "! email, and message are required!");               
@@ -148,7 +158,7 @@ var TxtType = function(el, toRotate, period) {
        //      }
        //  }
 
-       // }
+       }
     };
      function scrollEffect(){
             var svg = document.getElementsByClassName('svg');
